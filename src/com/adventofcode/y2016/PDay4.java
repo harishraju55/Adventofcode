@@ -1200,18 +1200,6 @@ public class PDay4 {
 		return true;
 	}
 
-	static Character[] removeElements(Character[] input, Character deleteMe) {
-		Character[] newSet = new Character[input.length - 1];
-		int countIdx = 0;
-	    for(Character item : input) {
-	    	if(deleteMe != item) {
-	        	newSet[countIdx] = item;
-	        	countIdx++;
-	        }
-	    }
-	    return newSet;
-	}
-	
 	static Map<Character, Long> charsByCount(String encryptStr) {
 		List<Character> encryptList = new ArrayList<Character>();
 		for (char ch : encryptStr.toCharArray()) {
