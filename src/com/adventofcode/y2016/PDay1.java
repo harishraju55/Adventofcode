@@ -48,7 +48,7 @@ public class PDay1 {
 		for (String step : navSteps) {
 			moveOn(step.trim());
 		}
-		System.out.println("Distance : " + (Math.abs(eastLength - westLength) + Math.abs(southLength - northLength)));
+		System.out.println("Easter Bunny HQ --> " + (Math.abs(eastLength - westLength) + Math.abs(southLength - northLength)) + " Blocks away..!!");
 	}
 	
 	static void firstLocationVisitedTwice(String navInput) {
@@ -65,6 +65,7 @@ public class PDay1 {
 		}
 		
 		// find a revisit.
+		// maze size needs some optimized.. but works for the current input..!
 		current = Direction.N;
 		int mazeSize = eastLength+westLength+southLength+northLength;
 		mazeSize = (mazeSize % 2) == 0 ? mazeSize + 1 : mazeSize;
@@ -72,7 +73,7 @@ public class PDay1 {
 		int fx, fy;
 		fx = fy = x = y = mazeSize/2;
 		
-		maze[x][y] = -1;
+		maze[x][y] = 7; // for the maze console visual.
 		for (String step : navSteps) {
 			moveOnMaze(step, maze);
 			if(reVisit) {
@@ -80,14 +81,16 @@ public class PDay1 {
 			}
 		}
 		if(reVisit) {
-			System.out.println("Original Location is --> " + (Math.abs(x - fx) + Math.abs(y - fy)) + " Blocks away");
+			System.out.println("Easter Bunny HQ Original Location is --> " + (Math.abs(x - fx) + Math.abs(y - fy)) + " Blocks away...!!");
 		} else {
-			System.out.println("Original Location is not found..! revisit never occured,,!!!");
+			System.out.println("Easter Bunny HQ Original Location is not found..! revisit never occured,,!!!");
+		}
+		// console maze visual.. enabled for small navigation inputs.
+		if(mazeSize < 40) {
+			System.out.println(Arrays.deepToString(maze).replace("], ", "]\n").replace("[[", "[").replace("]]", "]"));
 		}
 	}
 	
-	
-
 	static void moveOn(String nextMove) {
 		Turn nextStep;
 		int length = Integer.parseInt(nextMove.substring(1));
