@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 public class PDay4 {
 	public static void main(String[] args) {
 		
+		// all the tests are logged.
 		sumOfRealRoomSectorIds("aaaaa-bbb-z-y-x-123[abxyz]");
 		sumOfRealRoomSectorIds("a-b-c-d-e-f-g-h-987[abcde]");
 		sumOfRealRoomSectorIds("not-a-real-room-404[oarel]");
@@ -1102,11 +1103,11 @@ public class PDay4 {
 				foundAValidRoom = true;
 			}
 		}
-		String theKioskStr = (kioskRooms.size() == 1) ? inputString : "For the given input";
+		String theKioskStrLog = (kioskRooms.size() == 1) ? inputString : "For the given input";
 		if(foundAValidRoom) {
-			System.out.println(theKioskStr + " --> sum of the sector IDs of the real rooms --> " + sectorIdTotal);
+			System.out.println(theKioskStrLog + " --> sum of the sector IDs of the real rooms --> " + sectorIdTotal);
 		} else {
-			System.out.println(theKioskStr + " --> No valid room found..!!");
+			System.out.println(theKioskStrLog + " --> Not a valid room..!!");
 		}
 	}
 	

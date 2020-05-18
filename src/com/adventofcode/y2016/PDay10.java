@@ -40,6 +40,8 @@ public class PDay10 {
 	
 	public static void main(String[] args) {
 		
+		
+		// output is logged.
 		String inputString = "bot 135 gives low to bot 27 and high to bot 166\r\n" + 
 				"bot 57 gives low to bot 4 and high to bot 186\r\n" + 
 				"bot 115 gives low to output 2 and high to bot 80\r\n" + 

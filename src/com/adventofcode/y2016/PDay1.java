@@ -18,10 +18,13 @@ public class PDay1 {
 	
 	public static void main(String[] args) {
 		
-		distanseInBlocks("R2, L3");
-		distanseInBlocks("R2, R2, R2");
-		distanseInBlocks("R5, L5, R5, R3");
-		distanseInBlocks("R8, R4, R4, R8");
+		// simple tests.
+		testDistanceInBlocks("R2, L3", 5);
+		testDistanceInBlocks("R2, R2, R2", 2);
+		testDistanceInBlocks("R5, L5, R5, R3", 12);
+		testDistanceInBlocks("R8, R4, R4, R8", 8);
+		
+		//  R8, R4, R4, R8, the first location you visit twice is 4 blocks away
 		firstLocationVisitedTwice("R8, R4, R4, R8");
 		
 		String inputString = "R1, R3, L2, L5, L2, L1, R3, L4, R2, L2, L4, R2, L1, R1, L2, R3, L1, L4, R2, L5, R3, R4, L1, "
@@ -33,11 +36,22 @@ public class PDay1 {
 				+ "L2, R1, L3, L5, R5, R5, R3, L4, L2, R4, R5, R1, R4, L3";
 		
 		
-		distanseInBlocks(inputString);
+		distanceInBlocks(inputString);
 		firstLocationVisitedTwice(inputString);
 	}
 	
-	static void distanseInBlocks(String navInput) {
+	static void testDistanceInBlocks(String input, int expectedDistance) {
+		int distance = distanceInBlocks(input);
+		if(distance == expectedDistance) {
+			System.out.println("Test passed : When the input is --> " + input + ", then expect distance of --> " + expectedDistance);
+		}
+	}
+	
+	static void easterBunnyHqLog(int distance) {
+		System.out.println("Easter Bunny HQ --> " + (distance) + " Blocks away..!!");
+	}
+	
+	static int distanceInBlocks(String navInput) {
 		List<String> navSteps = Arrays.asList(navInput.split("\\s*,\\s*"));
 		current = Direction.N;
 		eastLength = 0;
@@ -48,7 +62,9 @@ public class PDay1 {
 		for (String step : navSteps) {
 			moveOn(step.trim());
 		}
-		System.out.println("Easter Bunny HQ --> " + (Math.abs(eastLength - westLength) + Math.abs(southLength - northLength)) + " Blocks away..!!");
+		int distance = Math.abs(eastLength - westLength) + Math.abs(southLength - northLength);
+		easterBunnyHqLog(distance);
+		return distance;
 	}
 	
 	static void firstLocationVisitedTwice(String navInput) {
